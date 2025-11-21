@@ -194,7 +194,8 @@ nav ul li:hover{
         height: 40px;
         border-radius: 8px;
         padding: 0 10px;
-        border: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
     }
 
     /* USER ICON / LOGIN */
