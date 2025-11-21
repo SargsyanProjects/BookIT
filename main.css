@@ -194,6 +194,7 @@ nav ul li:hover{
         height: 40px;
         border-radius: 8px;
         padding: 0 10px;
+        outline: none;
         border-bottom: 1px solid #ccc;
         background-color: transparent;
     }
