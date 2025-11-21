@@ -17,8 +17,12 @@ header{
 
 }
 
+a{
+   all: unset;
+}
+
 header figure{
-    width: 120px;
+    width: 150px;
     height:auto;
 }
 
@@ -30,7 +34,7 @@ header figure img{
 
 .user-group figure{
     font: 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
-    width:40px;
+    width:2.5rem;
     height: auto;
     overflow: hidden;
 }
@@ -54,8 +58,11 @@ header form input[type=search]{
     height: 2rem;
     border: none;
     outline: none;
-    border-bottom: 0.5px solid gray;
+    border-bottom: 1px solid gray;
+    transition: 0.2s ease;
 }
+
+
 
 .search-btn {
     background: url('assets/search-interface-symbol.png') no-repeat center;
@@ -64,4 +71,139 @@ header form input[type=search]{
     height: 40px;
     border: none;
     cursor: pointer;
+    transition: 0.2s ease;
+    margin: 0 30px;
+}
+
+header form input[type=search]:focus, header form input[type=search]:focus + .search-btn{
+    transform: scale(110%, 110%);
+    transition: 0.2s ease;
+}
+
+nav{
+    width: 100%;
+    height: auto;
+    font:14px "Roboto", sans-serif;
+    color: #272c4c;
+    font-weight: bold;
+}
+
+nav ul{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+}
+
+nav ul li{
+    text-decoration: none;
+    list-style: none;
+}
+
+nav ul li:hover{
+    opacity: 0.8;
+}
+
+.collapse-button{
+    all: unset;
+    width: 50px;
+    height: 50px;
+    color: #272c4c;
+    font-weight: bold;
+    display: none;
+    font-size: 16px;
+
+}
+
+@media (max-width: 768px) {
+
+    /* COLLAPSIBLE NAVBAR */
+    .navbar {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        position: absolute;
+        top: 100%;      /* directly below header */
+        left: 0;
+        width: 100%;
+        background-color: #d4eaff; /* light blue row background */
+        z-index: 1;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar.active {
+        max-height: 500px;  /* enough to show all items */
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar li {
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* MOBILE HEADER GRID */
+    header {
+        display: grid;
+        grid-template-columns: 50px 1fr 50px;  /* 3 columns: menu/search/user */
+        grid-template-rows: auto 50px;         /* logo + menu/search/user row */
+        grid-template-areas:
+            "logo logo logo"
+            "menu searchbar userlogin";
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        position: relative;
+    }
+
+    /* LOGO */
+    header figure {
+        grid-area: logo;
+        width: 80px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    /* COLLAPSE BUTTON */
+    .collapse-button {
+        grid-area: menu;
+        display: block;
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    /* SEARCH BAR */
+    header form {
+        grid-area: searchbar;
+        width: 100%;
+    }
+
+    header form input[type="search"],
+    header form input[type="text"] {
+        width: 100%;
+        height: 40px;
+        border-radius: 8px;
+        padding: 0 10px;
+        border: 1px solid #ccc;
+    }
+
+    /* USER ICON / LOGIN */
+    .user-group {
+        grid-area: userlogin;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+    }
 }
